@@ -184,7 +184,11 @@ class GameWithLogoScreen(private val game: Main) : KtxScreen {
     }
 
     override fun resize(width: Int, height: Int) {
-        // Puedes añadir lógica de redimensionamiento si es necesario
+        level.updateDimensions()
+        val initialPos = level.getInitialPlayerPosition()
+        playerPosition.set(initialPos)
+        player.width = level.getBlockSize() * 0.8f  
+        player.height = level.getBlockSize() * 0.8f
     }
 
     override fun dispose() {
